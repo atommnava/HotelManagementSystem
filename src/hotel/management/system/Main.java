@@ -3,12 +3,13 @@ package hotel.management.system;
 // Bibliotecas
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Main extends JFrame {
+public class Main extends JFrame implements ActionListener {
+    JButton next;
     Main()
     {
-        //setSize(1366,565);
-        //setLocationRelativeTo(null);
         setBounds(100,100,1366,565);
         setLayout(null);
 
@@ -17,17 +18,18 @@ public class Main extends JFrame {
         image.setBounds(0,0,1366,565);
         add(image);
 
-        JLabel text = new JLabel("Gestión de Hotel");
+        JLabel text = new JLabel("HOTEL MANAGEMENT SYSTEM");
         text.setBounds(20,430,1000,90);
         text.setForeground(Color.WHITE);
         text.setFont(new Font("Serif", Font.PLAIN, 45));
         image.add(text);
 
-        JButton next = new JButton("Next");
+        next = new JButton("Next");
         next.setBounds(1150,450,150,40);
         next.setFocusable(false);
         next.setBackground(Color.WHITE);
         next.setForeground(Color.BLACK);
+        next.addActionListener(this);
         image.add(next);
 
         setVisible(true);
@@ -47,7 +49,13 @@ public class Main extends JFrame {
             }
         }
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        setVisible(false);
+        new Login();
+    }
     public static void main(String[] args) {
         new Main();
     }
+
 }
