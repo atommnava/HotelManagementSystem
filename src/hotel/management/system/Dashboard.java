@@ -1,11 +1,14 @@
 package hotel.management.system;
 
+// Bibliotecas
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Databoard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener {
 
-    Databoard()
+    Dashboard()
     {
         setBounds(0,0,1550,1000);
         setLayout(null);
@@ -19,7 +22,7 @@ public class Databoard extends JFrame {
 
         JLabel text = new JLabel("THE TAJ GRUOP WELCOMES YOU");
         text.setBounds(400,80,1000,50);
-        text.setFont(new Font("Tahoma", Font.PLAIN, 46));
+        text.setFont(new Font("Times New Roman", Font.PLAIN, 46));
         text.setForeground(Color.WHITE);
         image.add(text);
 
@@ -32,6 +35,7 @@ public class Databoard extends JFrame {
         menuBar.add(hotel);
 
         JMenuItem reception = new JMenuItem("RECEPTION");
+        reception.addActionListener(this);
         hotel.add(reception);
 
         JMenu admin = new JMenu("ADMIN");
@@ -39,17 +43,33 @@ public class Databoard extends JFrame {
         menuBar.add(admin);
 
         JMenuItem addEmployee = new JMenuItem("ADD EMPLOYEE");
+        addEmployee.addActionListener(this);
         admin.add(addEmployee);
 
         JMenuItem addRoom = new JMenuItem("ADD ROOM");
+        addRoom.addActionListener(this);
         admin.add(addRoom);
 
-        JMenuItem addDriver = new JMenuItem("ADD DRIVER");
-        admin.add(addDriver);
+        JMenuItem addDrives = new JMenuItem("ADD DRIVER");
+        addDrives.addActionListener(this);
+        admin.add(addDrives);
 
         setVisible(true);
     }
-    public static void main(String[] args) {
-        new Databoard();
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("ADD EMPLOYEE")) {
+            new AddEmployee();
+        } else if (e.getActionCommand().equals("ADD ROOM")) {
+            new AddRooms();
+        } else if (e.getActionCommand().equals("ADD DRIVER")) {
+            new AddDriver();
+        }
     }
+
+    public static void main(String[] args) {
+        new Dashboard();
+    }
+
 }
