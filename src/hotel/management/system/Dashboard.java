@@ -65,6 +65,8 @@ public class Dashboard extends JFrame implements ActionListener {
             new AddRooms();
         } else if (e.getActionCommand().equals("ADD DRIVER")) {
             new AddDriver();
+        } else if (e.getActionCommand().equals("RECEPTION")) {
+            new Reception();
         }
     }
 
