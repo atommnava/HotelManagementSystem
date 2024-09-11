@@ -6,14 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
+    JButton add;
     Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-        JButton add = new JButton("New Customer");
+        add = new JButton("New Customer Form");
         add.setBounds(10,30,200,30);
         add.setForeground(Color.BLACK);
         add.setBackground(Color.WHITE);
+        add.addActionListener(this);
         add(add);
 
         JButton roomNo = new JButton("Department");
@@ -92,7 +94,10 @@ public class Reception extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == add) {
+            setVisible(false);
+            new AddCustomer();
+        }
     }
 
     public static void main(String[] args) {
