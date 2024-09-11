@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton add;
+    JButton add, roomNo, department;
     Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -18,25 +18,27 @@ public class Reception extends JFrame implements ActionListener {
         add.addActionListener(this);
         add(add);
 
-        JButton roomNo = new JButton("Department");
+        roomNo = new JButton("Rooms");
         roomNo.setBounds(10,70,200,30);
         roomNo.setForeground(Color.BLACK);
         roomNo.setBackground(Color.WHITE);
+        roomNo.addActionListener(this);
         add(roomNo);
 
-        JButton department = new JButton("All Employees");
+        department = new JButton("Department");
         department.setBounds(10,110,200,30);
         department.setForeground(Color.BLACK);
         department.setBackground(Color.WHITE);
+        department.addActionListener(this);
         add(department);
 
-        JButton allEmployee = new JButton("Customer Info");
+        JButton allEmployee = new JButton("Employee Info");
         allEmployee.setBounds(10,150,200,30);
         allEmployee.setForeground(Color.BLACK);
         allEmployee.setBackground(Color.WHITE);
         add(allEmployee);
 
-        JButton customers = new JButton("New Customer");
+        JButton customers = new JButton("Customer Info");
         customers.setBounds(10,190,200,30);
         customers.setForeground(Color.BLACK);
         customers.setBackground(Color.WHITE);
@@ -97,6 +99,12 @@ public class Reception extends JFrame implements ActionListener {
         if (e.getSource() == add) {
             setVisible(false);
             new AddCustomer();
+        } else if (e.getSource() == roomNo) {
+            setVisible(false);
+            new Room();
+        } else if (e.getSource() == department) {
+            setVisible(false);
+            new Department();
         }
     }
 
