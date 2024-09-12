@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton add, roomNo, department;
+    JButton add, roomNo, department, allEmployee, customers, managerInfo;
     Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -32,22 +32,25 @@ public class Reception extends JFrame implements ActionListener {
         department.addActionListener(this);
         add(department);
 
-        JButton allEmployee = new JButton("Employee Info");
+        allEmployee = new JButton("Employee Info");
         allEmployee.setBounds(10,150,200,30);
         allEmployee.setForeground(Color.BLACK);
         allEmployee.setBackground(Color.WHITE);
+        allEmployee.addActionListener(this);
         add(allEmployee);
 
-        JButton customers = new JButton("Customer Info");
+        customers = new JButton("Customer Info");
         customers.setBounds(10,190,200,30);
         customers.setForeground(Color.BLACK);
         customers.setBackground(Color.WHITE);
+        customers.addActionListener(this);
         add(customers);
 
-        JButton managerInfo = new JButton("Manager Info");
+        managerInfo = new JButton("Manager Info");
         managerInfo.setBounds(10,230,200,30);
         managerInfo.setForeground(Color.BLACK);
         managerInfo.setBackground(Color.WHITE);
+        managerInfo.addActionListener(this);
         add(managerInfo);
 
         JButton checkOut = new JButton("Checkout");
@@ -105,9 +108,17 @@ public class Reception extends JFrame implements ActionListener {
         } else if (e.getSource() == department) {
             setVisible(false);
             new Department();
+        } else if (e.getSource() == allEmployee) {
+            setVisible(false);
+            new EmployeeInfo();
+        } else if (e.getSource() == customers) {
+            setVisible(false);
+            new CustomerInfo();
+        } else if (e.getSource() == managerInfo) {
+            setVisible(false);
+            new ManagerInfo();
         }
     }
-
     public static void main(String[] args) {
         new Reception();
     }
