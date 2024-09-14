@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton add, roomNo, department, allEmployee, customers, managerInfo, search, update;
+    JButton add, roomNo, department, allEmployee, customers, managerInfo, search, update, updateRoom;
     public Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -66,10 +66,11 @@ public class Reception extends JFrame implements ActionListener {
         update.addActionListener(this);
         add(update);
 
-        JButton updateRoom = new JButton("Update Room Status");
+        updateRoom = new JButton("Update Room Status");
         updateRoom.setBounds(10,350,200,30);
         updateRoom.setForeground(Color.BLACK);
         updateRoom.setBackground(Color.WHITE);
+        updateRoom.addActionListener(this);
         add(updateRoom);
 
         JButton pickUp = new JButton("Pickup Service");
@@ -85,9 +86,9 @@ public class Reception extends JFrame implements ActionListener {
         search.addActionListener(this);
         add(search);
 
-        JButton logout = new JButton("Search Room");
+        JButton logout = new JButton("Logout");
         logout.setBounds(10,470,200,30);
-        logout.setForeground(Color.BLACK);
+        logout.setForeground(Color.BLUE);
         logout.setBackground(Color.WHITE);
         add(logout);
 
@@ -125,6 +126,9 @@ public class Reception extends JFrame implements ActionListener {
         } else if (e.getSource() == update) {
             setVisible(false);
             new UpdateCheck();
+        } else if (e.getSource() == updateRoom) {
+            setVisible(false);
+            new UpdateRoom();
         }
     }
 
