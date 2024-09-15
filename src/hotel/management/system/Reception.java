@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton add, roomNo, department, allEmployee, customers, managerInfo, search, pickUp, update, updateRoom;
+    JButton add, roomNo, department, allEmployee, customers, managerInfo, search,
+            pickUp, update, updateRoom, checkout, logout;
     public Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -53,12 +54,12 @@ public class Reception extends JFrame implements ActionListener {
         managerInfo.addActionListener(this);
         add(managerInfo);
 
-        JButton checkOut = new JButton("Checkout");
-        checkOut.setBounds(10,270,200,30);
-        checkOut.setForeground(Color.BLACK);
-        checkOut.setBackground(Color.WHITE);
-        checkOut.addActionListener(this);
-        add(checkOut);
+        checkout = new JButton("Checkout");
+        checkout.setBounds(10,270,200,30);
+        checkout.setForeground(Color.BLACK);
+        checkout.setBackground(Color.WHITE);
+        checkout.addActionListener(this);
+        add(checkout);
 
         update = new JButton("Update Status");
         update.setBounds(10,310,200,30);
@@ -88,10 +89,11 @@ public class Reception extends JFrame implements ActionListener {
         search.addActionListener(this);
         add(search);
 
-        JButton logout = new JButton("Logout");
+        logout = new JButton("Logout");
         logout.setBounds(10,470,200,30);
         logout.setForeground(Color.BLUE);
         logout.setBackground(Color.WHITE);
+        logout.addActionListener(this);
         add(logout);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons-hotel/fourth.jpg"));
@@ -134,6 +136,12 @@ public class Reception extends JFrame implements ActionListener {
         } else if (e.getSource() == pickUp) {
             setVisible(false);
             new PickUp();
+        } else if (e.getSource() == checkout) {
+            setVisible(false);
+            new Checkout();
+        } else if (e.getSource() == logout) {
+            setVisible(false);
+            System.exit(0);
         }
     }
     public static void main(String[] args) {
